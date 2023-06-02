@@ -1,8 +1,15 @@
-@import url("https://fonts.cdnfonts.com/css/futura-std-4");
+// @import url("https://fonts.cdnfonts.com/css/futura-std-4");
 
 @font-face {
   font-family: "Aquino";
   src: url("/Aquino.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Futura Std";
+  src: url("/FuturaStd.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
