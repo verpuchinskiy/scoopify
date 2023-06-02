@@ -1,0 +1,25 @@
+@import url("https://fonts.cdnfonts.com/css/aquino");
+
+.home {
+  h2 {
+    font-family: "Aquino", sans-serif;
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .ingredients {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    .ingredients {
+      justify-content: space-around;
+      gap: 30px;
+    }
+  }
+}

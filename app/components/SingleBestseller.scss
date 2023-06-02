@@ -1,0 +1,26 @@
+.singleBestseller {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #5a6a89;
+  // flex: 1;
+  padding: 0 40px 40px;
+  width: 300px;
+  text-align: justify;
+
+  & > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin: 20px 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}

@@ -1,0 +1,240 @@
+@import "../globals.scss";
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+
+  .left {
+    img {
+      width: 250px;
+    }
+  }
+
+  .center {
+    ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      color: $blue-color;
+      font-weight: 600;
+      font-size: 1.1rem;
+
+      li {
+        &:hover {
+          color: #2790db;
+        }
+
+        &:active {
+          color: $pink-color;
+        }
+      }
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+
+      span {
+        width: 25px;
+        height: 3px;
+        background-color: $blue-color;
+        margin-bottom: 5px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      &.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+      &.open span:nth-child(2) {
+        opacity: 0;
+      }
+      &.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+    }
+
+    &.open ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      position: absolute;
+      background-color: white;
+      padding: 30px 40px;
+      top: 40px;
+      left: -70px;
+      width: 160px;
+      animation: slideDown 0.5s ease;
+    }
+  }
+
+  .right {
+    color: $pink-color;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    button {
+      background-color: $pink-color;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+
+      &:hover {
+        background-color: #eb619c;
+      }
+
+      &:active {
+        background-color: $blue-color;
+      }
+    }
+
+    .shoppingCartBlock {
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        .shoppingCart {
+          color: #eb619c;
+        }
+        .itemsNumber {
+          background-color: #2790db;
+        }
+      }
+
+      &:active {
+        .shoppingCart {
+          color: $blue-color;
+        }
+        .itemsNumber {
+          background-color: $pink-color;
+        }
+      }
+
+      .shoppingCart {
+        font-size: 35px;
+      }
+
+      .itemsNumber {
+        background-color: $blue-color;
+        color: white;
+        font-size: 12px;
+        padding: 3px;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 14px;
+        right: 9px;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 920px) {
+  .navbar {
+    .left {
+      img {
+        width: 180px;
+      }
+    }
+
+    .center {
+      position: relative;
+
+      ul {
+        gap: 25px;
+        font-size: 1rem;
+      }
+    }
+
+    .right {
+      button {
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .shoppingCartBlock {
+        .shoppingCart {
+          font-size: 32px;
+        }
+
+        .itemsNumber {
+          width: 14px;
+          height: 14px;
+          top: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .center {
+      ul {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      &.open ul {
+        animation: slideDown 0.3s ease;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    gap: 20px;
+
+    .center {
+      ul {
+        display: flex;
+      }
+      .hamburger {
+        display: none;
+      }
+    }
+    .right {
+      width: 100%;
+      justify-content: space-around;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar {
+    .center {
+      ul {
+        white-space: nowrap;
+        gap: 20px;
+      }
+    }
+  }
+}

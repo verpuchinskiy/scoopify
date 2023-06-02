@@ -1,0 +1,49 @@
+@import "../globals.scss";
+
+.bestsellers {
+  margin: 40px 0;
+  line-height: 2rem;
+
+  .list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .showMore {
+    text-align: center;
+    padding: 10px 40px 40px;
+
+    button {
+      background-color: $pink-color;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+
+      &:hover {
+        background-color: #eb619c;
+      }
+
+      &:active {
+        background-color: $blue-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .bestsellers {
+    line-height: 1.5rem;
+
+    .showMore {
+      button {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+    }
+  }
+}
