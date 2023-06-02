@@ -7,12 +7,17 @@ import { ProductsContext } from "../components/ProductsContext";
 export default function Checkout() {
   const { selectedProducts, setSelectedProducts } = useContext(ProductsContext);
   const [productsInfo, setProductsInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const uniqueProducts = [...new Set(selectedProducts)];
+    setIsLoading(true);
     fetch("/api/products?ids=" + uniqueProducts.join(","))
       .then((response) => response.json())
-      .then((json) => setProductsInfo(json));
+      .then((json) => {
+        setProductsInfo(json);
+        setIsLoading(false);
+      });
   }, [selectedProducts]);
 
   const addProduct = (id) => {
@@ -29,7 +34,7 @@ export default function Checkout() {
   };
 
   let total = 0;
-  if (selectedProducts?.length) {
+  if (selectedProducts?.length && productsInfo.length) {
     for (let id of selectedProducts) {
       const product = productsInfo.find((p) => p._id === id);
       if (product) {
@@ -41,14 +46,18 @@ export default function Checkout() {
   return (
     <div className="checkout">
       <h2>Your Shopping Cart</h2>
-      {!productsInfo.length && (
+      {isLoading && (
+        <p style={{ textAlign: "center", marginTop: "60px" }}>Loading...</p>
+      )}
+      {!isLoading && !productsInfo.length && (
         <p style={{ textAlign: "center", marginTop: "60px" }}>
           Your Shopping Cart is empty.
         </p>
       )}
-      {productsInfo.length > 0 &&
+      {!isLoading &&
+        productsInfo.length > 0 &&
         productsInfo.map((productInfo) => (
-          <div className="productData">
+          <div className="productData" key={productInfo._id}>
             <div className="image">
               <img src={productInfo.img} />
             </div>
@@ -62,7 +71,7 @@ export default function Checkout() {
             </div>
           </div>
         ))}
-      {productsInfo.length && (
+      {productsInfo.length > 0 && (
         <>
           <div className="total">
             <h3>Total:</h3>
