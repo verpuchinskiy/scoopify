@@ -5,6 +5,7 @@ import { Ingredient } from "./components/Ingredient";
 import "./Home.scss";
 import "./globals.scss";
 import { Bestsellers } from "./components/Bestsellers";
+import Head from "next/head";
 
 const ingredients = [
   {
@@ -38,9 +39,11 @@ const ingredients = [
 ];
 
 export default function Home() {
-
   return (
     <div className="home">
+      <Head>
+        <link href="https://fonts.cdnfonts.com/css/aquino" rel="stylesheet" />
+      </Head>
       <Hero />
       <h2>We use only natural ingredients</h2>
       <div className="ingredients">
