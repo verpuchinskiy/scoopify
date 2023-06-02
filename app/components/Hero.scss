@@ -1,5 +1,5 @@
-@import url("https://fonts.cdnfonts.com/css/aquino?styles=37661");
-@import url("https://fonts.cdnfonts.com/css/b-burled-walnut");
+// @import url("https://fonts.cdnfonts.com/css/aquino?styles=37661");
+@import url("/app/globals.scss");
 
 .hero {
   width: 100%;
@@ -11,8 +11,7 @@
 
   .left {
     flex: 1;
-    // font-family: "Aquino", sans-serif;
-    font-family: "b Burled Walnut", sans-serif;
+    font-family: "Aquino", sans-serif;
     font-size: 4rem;
     display: flex;
     align-items: center;
